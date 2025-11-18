@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "installCommand": "go mod download",
   "env": {
     "APP_PORT": "8080"
   }

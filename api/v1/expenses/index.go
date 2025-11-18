@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/nava1525/bilio-backend/api"
-	"github.com/nava1525/bilio-backend/internal/app/services"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -37,7 +36,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			}
 			api.RespondJSON(w, http.StatusOK, expense)
 		case http.MethodPut:
-			var input services.UpdateExpenseInput
+			var input api.UpdateExpenseInput
 			if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 				api.RespondError(w, http.StatusBadRequest, "invalid payload")
 				return
@@ -57,7 +56,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case http.MethodGet:
-		filters := services.ExpenseFilters{}
+		filters := api.ExpenseFilters{}
 
 		if clientID := r.URL.Query().Get("client_id"); clientID != "" {
 			filters.ClientID = &clientID
@@ -83,7 +82,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 		api.RespondJSON(w, http.StatusOK, expenses)
 	case http.MethodPost:
-		var input services.CreateExpenseInput
+		var input api.CreateExpenseInput
 		if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 			api.RespondError(w, http.StatusBadRequest, "invalid payload")
 			return

@@ -9,6 +9,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/nava1525/bilio-backend/internal/app/models"
 	"github.com/nava1525/bilio-backend/internal/app/repositories"
 	"github.com/nava1525/bilio-backend/internal/app/services"
 	"github.com/nava1525/bilio-backend/internal/config"
@@ -250,5 +251,41 @@ func ExtractID(r *http.Request) string {
 
 func GetContextWithUserID(r *http.Request, userID string) context.Context {
 	return context.WithValue(r.Context(), "user_id", userID)
+}
+
+// Re-export service types to avoid importing internal packages from function files
+type (
+	// Auth service types
+	LoginInput    = services.LoginInput
+	RegisterInput = services.RegisterInput
+
+	// Client service types
+	CreateClientInput = services.CreateClientInput
+	UpdateClientInput = services.UpdateClientInput
+
+	// Invoice service types
+	CreateInvoiceInput = services.CreateInvoiceInput
+	UpdateInvoiceInput = services.UpdateInvoiceInput
+	InvoiceFilters     = services.InvoiceFilters
+	CreatePaymentInput = services.CreatePaymentInput
+
+	// Expense service types
+	CreateExpenseInput = services.CreateExpenseInput
+	UpdateExpenseInput = services.UpdateExpenseInput
+	ExpenseFilters     = services.ExpenseFilters
+
+	// User service types
+	CreateUserInput = services.CreateUserInput
+
+	// Waitlist service types
+	JoinWaitlistInput = services.JoinWaitlistInput
+)
+
+// Re-export model types
+type InvoiceStatus = models.InvoiceStatus
+
+// Re-export service functions
+func AsValidationError(err error) (services.ValidationError, bool) {
+	return services.AsValidationError(err)
 }
 

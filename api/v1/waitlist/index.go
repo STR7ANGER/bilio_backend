@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/nava1525/bilio-backend/api"
-	"github.com/nava1525/bilio-backend/internal/app/services"
 )
 
 type waitlistJoinRequest struct {
@@ -35,12 +34,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	entry, err := api.GetWaitlistService().Join(r.Context(), services.JoinWaitlistInput{
+	entry, err := api.GetWaitlistService().Join(r.Context(), api.JoinWaitlistInput{
 		Email:     req.Email,
 		Promocode: req.Promocode,
 	})
 	if err != nil {
-		if validationErr, ok := services.AsValidationError(err); ok {
+		if validationErr, ok := api.AsValidationError(err); ok {
 			api.RespondError(w, http.StatusBadRequest, validationErr.Message)
 			return
 		}

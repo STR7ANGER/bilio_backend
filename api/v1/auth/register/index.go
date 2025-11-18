@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/nava1525/bilio-backend/api"
-	"github.com/nava1525/bilio-backend/internal/app/services"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -24,7 +23,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var input services.RegisterInput
+	var input api.RegisterInput
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 		api.RespondError(w, http.StatusBadRequest, "invalid payload")
 		return

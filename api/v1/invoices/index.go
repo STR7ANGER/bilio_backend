@@ -7,8 +7,6 @@ import (
 	"time"
 
 	"github.com/nava1525/bilio-backend/api"
-	"github.com/nava1525/bilio-backend/internal/app/models"
-	"github.com/nava1525/bilio-backend/internal/app/services"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -38,7 +36,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			}
 			api.RespondJSON(w, http.StatusOK, invoice)
 		case http.MethodPut:
-			var input services.UpdateInvoiceInput
+			var input api.UpdateInvoiceInput
 			if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 				api.RespondError(w, http.StatusBadRequest, "invalid payload")
 				return
@@ -58,10 +56,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case http.MethodGet:
-		filters := services.InvoiceFilters{}
+		filters := api.InvoiceFilters{}
 
 		if status := r.URL.Query().Get("status"); status != "" {
-			s := models.InvoiceStatus(status)
+			s := api.InvoiceStatus(status)
 			filters.Status = &s
 		}
 		if clientID := r.URL.Query().Get("client_id"); clientID != "" {
@@ -85,7 +83,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 		api.RespondJSON(w, http.StatusOK, invoices)
 	case http.MethodPost:
-		var input services.CreateInvoiceInput
+		var input api.CreateInvoiceInput
 		if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 			api.RespondError(w, http.StatusBadRequest, "invalid payload")
 			return
