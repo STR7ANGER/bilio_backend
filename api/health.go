@@ -2,19 +2,21 @@ package api
 
 import (
 	"net/http"
+
+	"github.com/nava1525/bilio-backend/pkg/api"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	HandleCORS(w, r)
+	api.HandleCORS(w, r)
 	if r.Method == "OPTIONS" {
 		return
 	}
 
 	if r.Method != http.MethodGet {
-		RespondError(w, http.StatusMethodNotAllowed, "method not allowed")
+		api.RespondError(w, http.StatusMethodNotAllowed, "method not allowed")
 		return
 	}
 
-	RespondJSON(w, http.StatusOK, map[string]string{"status": "ok"})
+	api.RespondJSON(w, http.StatusOK, map[string]string{"status": "ok"})
 }
 

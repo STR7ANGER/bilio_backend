@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/nava1525/bilio-backend/api"
+	"github.com/nava1525/bilio-backend/pkg/api"
 )
 
 type waitlistJoinRequest struct {
