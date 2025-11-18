@@ -1,10 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "api/**/*.go": {
-      "runtime": "go1.x"
-    }
-  },
   "env": {
     "APP_PORT": "8080"
   }
