@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Development files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+/bin/
+/dist/
+
+# Test files
+*_test.go
+test/
+tests/
+
+# Scripts (not needed in container)
+scripts/
+
+# Migrations (if not needed at runtime)
+# migrations/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+

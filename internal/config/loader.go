@@ -89,6 +89,15 @@ func Load() (*Config, error) {
 		return nil, fmt.Errorf("unmarshal config: %w", err)
 	}
 
+	// Check for PORT environment variable (used by Vercel and other platforms)
+	// This takes precedence over APP_PORT for platform compatibility
+	if portEnv := os.Getenv("PORT"); portEnv != "" {
+		var port int
+		if _, err := fmt.Sscanf(portEnv, "%d", &port); err == nil && port > 0 {
+			cfg.App.Port = port
+		}
+	}
+
 	if envUser := os.Getenv("EMAIL_USER"); envUser != "" {
 		cfg.Email.SMTP.Username = envUser
 	}
