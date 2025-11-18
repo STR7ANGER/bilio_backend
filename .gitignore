@@ -1,0 +1,24 @@
+# Binaries
+/bin/
+/build/
+/dist/
+*.exe
+
+# Go
+*.test
+*.out
+coverage*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Prisma
+prisma/migrations/
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store

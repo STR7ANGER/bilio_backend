@@ -1,0 +1,25 @@
+# Air configuration for Bilio Backend
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  cmd = "go build -o ./tmp/main ./cmd/server"
+  bin = "./tmp/main"
+  include_ext = ["go", "yaml", "yml", "toml", "json"]
+  exclude_dir = ["tmp", "vendor", "prisma/migrations"]
+  exclude_regex = ["_test.go"]
+  delay = 100
+
+[log]
+  level = "debug"
+  color = true
+
+[color]
+  main = "yellow"
+  watcher = "cyan"
+  build = "green"
+  runner = "magenta"
+  app = "white"
+
+[proxy]
+  enabled = false

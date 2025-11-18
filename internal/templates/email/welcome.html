@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to BillStack</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(circle at top left, #2b2b30 0%, #17171a 55%, #0e0e10 100%);
+        font-family: "Inter", "Segoe UI", sans-serif;
+        color: #f5f5f7;
+      }
+
+      table {
+        border-spacing: 0;
+        width: 100%;
+      }
+
+      .wrapper {
+        padding: 40px 0;
+      }
+
+      .container {
+        max-width: 560px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(35, 35, 40, 0.9) 0%, rgba(22, 22, 26, 0.95) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+      }
+
+      .top-bar {
+        background: linear-gradient(135deg, #7f7f89 0%, #4f4f56 35%, #28282d 100%);
+        padding: 18px 28px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .top-bar-circle {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.1) 70%, rgba(255, 255, 255, 0) 100%);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 12px rgba(111, 179, 255, 0.5);
+      }
+
+      .logo-text {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #ffffff;
+      }
+
+      .content {
+        padding: 36px 32px 44px;
+      }
+
+      .content h1 {
+        font-size: 28px;
+        color: #f4f4f6;
+        margin: 0 0 18px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .divider {
+        height: 1px;
+        width: 64px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(180, 180, 190, 0.55) 45%, rgba(255, 255, 255, 0) 100%);
+        margin: 16px 0 28px;
+      }
+
+      .content p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: rgba(229, 229, 235, 0.86);
+        margin: 0 0 18px;
+      }
+
+      .feature-card {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 18px 20px;
+        background: linear-gradient(120deg, rgba(44, 44, 50, 0.7) 0%, rgba(21, 21, 24, 0.9) 100%);
+        margin-bottom: 14px;
+      }
+
+      .feature-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #f0f1f4;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .feature-title span {
+        display: inline-flex;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #c0c5d0 0%, #6f7580 100%);
+        box-shadow: 0 0 8px rgba(175, 182, 194, 0.55);
+      }
+
+      .feature-text {
+        font-size: 14px;
+        color: rgba(216, 218, 226, 0.7);
+        margin: 0;
+      }
+
+      .cta {
+        display: inline-block;
+        margin-top: 24px;
+        padding: 14px 26px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #b6b9c2 0%, #90939c 45%, #5a5d65 100%);
+        color: #101013;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(112, 116, 126, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      .footer {
+        padding: 24px 32px 36px;
+        background: rgba(0, 0, 0, 0.25);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: center;
+      }
+
+      .footer p {
+        margin: 0;
+        font-size: 12px;
+        color: rgba(196, 196, 205, 0.6);
+        line-height: 1.6;
+      }
+
+      @media screen and (max-width: 600px) {
+        .container {
+          border-radius: 0;
+        }
+
+        .content {
+          padding: 28px 22px 36px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <table role="presentation" class="wrapper">
+      <tr>
+        <td>
+          <div class="container">
+            <div class="top-bar">
+              <div class="top-bar-circle"></div>
+              <div class="logo-text">BillStack</div>
+            </div>
+
+            <div class="content">
+              <h1>Welcome to the BillStack waitlist</h1>
+              <div class="divider"></div>
+
+              <p>Hi there,</p>
+              <p>
+                Thanks for raising your hand for early access. BillStack is built for teams who want their billing
+                workflow to feel as sharp as the financial insights it produces.
+              </p>
+
+              <div class="feature-card">
+                <div class="feature-title"><span></span>Branded invoices that convert</div>
+                <p class="feature-text">
+                  Build polished invoices with your branding, priced in seconds, paired with one-click payment links.
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-title"><span></span>Automated smart nudges</div>
+                <p class="feature-text">
+                  Let BillStack handle the awkward follow-ups with adaptive reminders that keep cash flowing.
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-title"><span></span>Total expense visibility</div>
+                <p class="feature-text">
+                  Track expenses against every client and project so you always know where you’re winning.
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-title"><span></span>Live profitability dashboards</div>
+                <p class="feature-text">
+                  Stay on top of margins with real-time insights that surface the metrics you actually care about.
+                </p>
+              </div>
+
+              <p>
+                You’re now on the priority list. We’ll be in touch soon with rollout timelines, onboarding, and early
+                partner perks crafted for the waitlist.
+              </p>
+
+              <p>Talk soon,<br />Team BillStack</p>
+
+              <a class="cta" href="https://billstack.app">View the Roadmap</a>
+            </div>
+
+            <div class="footer">
+              <p>BillStack • 221B Residency Road • Remote First</p>
+              <p>This email was sent to you because you joined the BillStack waitlist.</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+
