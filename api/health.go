@@ -1,22 +1,30 @@
 package api
 
 import (
+	"encoding/json"
 	"net/http"
-
-	"github.com/nava1525/bilio-backend/pkg/api"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	api.HandleCORS(w, r)
+	// Simple CORS headers for health check
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	
 	if r.Method == "OPTIONS" {
+		w.WriteHeader(http.StatusNoContent)
 		return
 	}
 
 	if r.Method != http.MethodGet {
-		api.RespondError(w, http.StatusMethodNotAllowed, "method not allowed")
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		_ = json.NewEncoder(w).Encode(map[string]string{"error": "method not allowed"})
 		return
 	}
 
-	api.RespondJSON(w, http.StatusOK, map[string]string{"status": "ok"})
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
 }
 

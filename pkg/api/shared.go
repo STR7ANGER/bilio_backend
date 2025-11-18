@@ -100,9 +100,12 @@ func EnsureInitialized() error {
 // Helper functions
 
 func HandleCORS(w http.ResponseWriter, r *http.Request) {
-	origins := sharedConfig.CORS.AllowedOrigins
-	if len(origins) == 0 {
-		origins = []string{"*"}
+	// Ensure initialization before accessing sharedConfig
+	_ = EnsureInitialized()
+	
+	origins := []string{"*"}
+	if sharedConfig != nil && len(sharedConfig.CORS.AllowedOrigins) > 0 {
+		origins = sharedConfig.CORS.AllowedOrigins
 	}
 
 	origin := r.Header.Get("Origin")
@@ -115,7 +118,11 @@ func HandleCORS(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if allowed {
-		w.Header().Set("Access-Control-Allow-Origin", origin)
+		if origin != "" {
+			w.Header().Set("Access-Control-Allow-Origin", origin)
+		} else if origins[0] == "*" {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+		}
 	}
 
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
